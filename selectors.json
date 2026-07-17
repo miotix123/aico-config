@@ -1,0 +1,51 @@
+{
+  "_comment": "AI Chat Organizer — remote selector config (brief §7). Host this file publicly (e.g. GitHub raw) and set REMOTE_CONFIG_URL in background.js to its URL. To hot-fix a broken selector: edit here, bump version, commit — installed extensions pick it up within ~6h, no store review.",
+  "version": 2,
+  "platforms": {
+    "chatgpt": {
+      "label": "ChatGPT",
+      "origin": "https://chatgpt.com",
+      "chatList": ["nav[aria-label]", "#history", "nav"],
+      "chatLink": ["a[href^=\"/c/\"]", "a[href*=\"/c/\"]"],
+      "chatIdPattern": "\\/c\\/([a-zA-Z0-9-]+)",
+      "chatUrlPrefix": "/c/",
+      "titleAttr": null,
+      "composer": [
+        "#prompt-textarea",
+        "div[contenteditable=\"true\"].ProseMirror",
+        "form div[contenteditable=\"true\"]",
+        "textarea[data-testid=\"prompt-textarea\"]"
+      ],
+      "emptyHint": "No chats detected yet — open your ChatGPT history sidebar."
+    },
+    "claude": {
+      "label": "Claude",
+      "origin": "https://claude.ai",
+      "chatList": ["nav", "main"],
+      "chatLink": ["a[href^=\"/chat/\"]"],
+      "chatIdPattern": "\\/chat\\/([a-zA-Z0-9-]+)",
+      "chatUrlPrefix": "/chat/",
+      "titleAttr": "aria-label",
+      "composer": [
+        "div[contenteditable=\"true\"].ProseMirror",
+        "div[contenteditable=\"true\"]"
+      ],
+      "emptyHint": "No chats detected yet — open the sidebar or visit claude.ai/recents to index your chats."
+    },
+    "gemini": {
+      "label": "Gemini",
+      "origin": "https://gemini.google.com",
+      "chatList": ["bard-sidenav", "[role=\"navigation\"]"],
+      "chatLink": ["[data-test-id=\"conversation\"] a[href*=\"/app/\"]", "a[href^=\"/app/\"]"],
+      "chatIdPattern": "\\/app\\/([a-zA-Z0-9]+)",
+      "chatUrlPrefix": "/app/",
+      "titleAttr": "aria-label",
+      "composer": [
+        "rich-textarea div[contenteditable=\"true\"]",
+        ".ql-editor",
+        "div[contenteditable=\"true\"]"
+      ],
+      "emptyHint": "No chats detected yet — open Gemini's sidebar (its chat list only loads when the sidebar is open)."
+    }
+  }
+}
